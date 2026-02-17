@@ -22,7 +22,6 @@ body {
     height: 100vh;
     overflow: hidden;
     display: flex;
-    /* Fix for body taking full height properly */
 }
 
 #app {
@@ -44,6 +43,7 @@ body {
     overflow-y: auto;
     box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
     z-index: 10;
+    flex-shrink: 0;
 }
 
 header h1 {
@@ -223,11 +223,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
     text-decoration-color: #e4e4e7;
 }
 
+/* Canvas Area */
 .preview-area {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 2rem;
     background-color: #000;
     background-image:
         radial-gradient(#27272a 1px, transparent 1px),
@@ -235,24 +237,68 @@ input[type="range"]::-webkit-slider-thumb:hover {
     background-size: 24px 24px;
     background-position: 0 0, 12px 12px;
     position: relative;
+    overflow: hidden;
 }
 
-/* Shadow behind the canvas to make it pop */
 .canvas-container {
-    position: relative;
-    padding: 0;
-    background: transparent;
-    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.7);
-    transition: transform 0.3s;
+    width: 100%;
+    max-width: 512px;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    background: #000;
+    /* Fallback */
+    display: flex;
 }
 
 canvas {
+    width: 100% !important;
+    height: 100% !important;
     display: block;
-    /* Ensure it looks good on screens */
-    max-width: 100%;
-    max-height: 90vh;
-    width: 512px;
-    height: 512px;
-    /* Optional slight border radius for the preview only, not the export */
-    /* border-radius: 4px; */
+    object-fit: contain;
+}
+
+/* Scrollbar for controls */
+.controls::-webkit-scrollbar {
+    width: 6px;
+}
+
+.controls::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.controls::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    body {
+        overflow: auto;
+        /* Allow scrolling on body for mobile */
+        height: auto;
+    }
+
+    #app {
+        flex-direction: column-reverse;
+        /* Controls below preview */
+    }
+
+    .controls {
+        width: 100%;
+        border-right: none;
+        border-top: 1px solid var(--border-color);
+        max-height: none;
+        /* Let it grow */
+        overflow-y: visible;
+        flex-shrink: 0;
+    }
+
+    .preview-area {
+        padding: 1rem;
+        min-height: 50vh;
+        /* Ensure visibility */
+        flex-shrink: 0;
+    }
 }
