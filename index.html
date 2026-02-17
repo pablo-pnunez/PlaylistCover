@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playlist Cover Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Playfair+Display:wght@400;700&family=Oswald:wght@400;700&family=Pacifico&family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Lobster&family=Abril+Fatface&family=Comfortaa:wght@300;700&family=Righteous&family=Cinzel:wght@400;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <aside class="controls">
+      <header>
+        <h1>Cover Gen</h1>
+      </header>
+
+      <div class="control-group">
+        <h2>Background</h2>
+        <button id="randomBgBtn" class="secondary-btn">🎲 Randomize Background</button>
+        <div class="input-row">
+          <label>Type</label>
+          <select id="bgType">
+            <option value="linear">Linear Gradient</option>
+            <option value="radial">Radial Gradient</option>
+            <option value="solid">Solid Color</option>
+          </select>
+        </div>
+        <div class="input-row">
+          <label>Color 1</label>
+          <input type="color" id="color1" value="#ff00cc">
+        </div>
+        <div class="input-row">
+          <label>Color 2</label>
+          <input type="color" id="color2" value="#333399">
+        </div>
+        <div class="input-row">
+          <label>Direction (Linear)</label>
+          <input type="range" id="direction" min="0" max="360" value="45">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <h2>Text Layer</h2>
+        <div class="input-row">
+          <label>Content</label>
+          <textarea id="textContent" rows="3">My Playlist</textarea>
+        </div>
+        <div class="input-row">
+          <label>Size</label>
+          <input type="range" id="textSize" min="20" max="200" value="60">
+        </div>
+        <div class="input-row">
+          <label>Color</label>
+          <input type="color" id="textColor" value="#ffffff">
+        </div>
+        <div class="input-row">
+          <label>Letter Spacing</label>
+          <input type="range" id="letterSpacing" min="-20" max="50" value="0">
+        </div>
+        <div class="input-row">
+          <label>Line Height</label>
+          <input type="range" id="lineHeight" min="0.5" max="3" step="0.1" value="1.2">
+        </div>
+        <div class="input-row">
+          <label>Font Family</label>
+          <select id="fontFamily">
+            <option value="'Outfit', sans-serif">Modern (Outfit)</option>
+            <option value="'Playfair Display', serif">Elegant (Playfair)</option>
+            <option value="'Oswald', sans-serif">Bold (Oswald)</option>
+            <option value="'Bebas Neue', sans-serif">Condensed (Bebas Neue)</option>
+            <option value="'Lobster', cursive">Decorative (Lobster)</option>
+            <option value="'Abril Fatface', cursive">Poster (Abril Fatface)</option>
+            <option value="'Pacifico', cursive">Handwritten (Pacifico)</option>
+            <option value="'Comfortaa', cursive">Rounded (Comfortaa)</option>
+            <option value="'Righteous', cursive">Futuristic (Righteous)</option>
+            <option value="'Cinzel', serif">Cinematic (Cinzel)</option>
+            <option value="'Space Mono', monospace">Tech (Space Mono)</option>
+          </select>
+        </div>
+        <div class="input-row">
+          <label>Font Weight</label>
+          <select id="fontWeight">
+            <option value="300">Light</option>
+            <option value="500" selected>Medium</option>
+            <option value="700">Bold</option>
+          </select>
+        </div>
+        <div class="input-row">
+          <label>Position X</label>
+          <input type="range" id="posX" min="0" max="512" value="256">
+        </div>
+        <div class="input-row">
+          <label>Position Y</label>
+          <input type="range" id="posY" min="0" max="512" value="256">
+        </div>
+        <div class="input-row" style="flex-direction: row; align-items: center; gap: 0.8rem;">
+          <input type="checkbox" id="textShadow" checked style="width: auto;">
+          <label for="textShadow" style="margin: 0; cursor: pointer;">Enable Drop Shadow</label>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="downloadBtn" class="primary-btn">Download Cover</button>
+        <button id="resetBtn" class="text-btn">Reset to Default</button>
+      </div>
+    </aside>
+
+    <main class="preview-area">
+      <div class="canvas-container">
+        <canvas id="coverCanvas" width="512" height="512"></canvas>
+      </div>
+    </main>
+  </div>
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>

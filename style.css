@@ -1,0 +1,258 @@
+:root {
+    --bg-color: #0f0f13;
+    --panel-bg: rgba(24, 24, 27, 0.8);
+    --text-color: #ffffff;
+    --accent-color: #646cff;
+    --accent-hover: #7d84ff;
+    --border-color: #3f3f46;
+    --font-family: 'Outfit', sans-serif;
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    /* Fix for body taking full height properly */
+}
+
+#app {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.controls {
+    width: 340px;
+    background-color: var(--panel-bg);
+    border-right: var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow-y: auto;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ff00cc, #333399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.control-group h2 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #a1a1aa;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    border-bottom: 1px solid #27272a;
+    padding-bottom: 0.5rem;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-row label {
+    font-size: 0.85rem;
+    color: #e4e4e7;
+    font-weight: 500;
+}
+
+input[type="text"],
+textarea,
+select {
+    padding: 0.7rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: #27272a;
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.2);
+}
+
+/* Custom Color Input */
+input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    width: 100%;
+    height: 45px;
+    cursor: pointer;
+    background: none;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+/* Custom Range Input */
+input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: #27272a;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.actions {
+    margin-top: auto;
+    padding-top: 2rem;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(100, 108, 255, 0.3);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(100, 108, 255, 0.4);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+.secondary-btn {
+    width: 100%;
+    padding: 0.6rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #e4e4e7;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.secondary-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #71717a;
+}
+
+.text-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: none;
+    color: #a1a1aa;
+    border: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: all 0.2s;
+}
+
+.text-btn:hover {
+    color: #e4e4e7;
+    text-decoration-color: #e4e4e7;
+}
+
+.preview-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    background-image:
+        radial-gradient(#27272a 1px, transparent 1px),
+        radial-gradient(#27272a 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+    position: relative;
+}
+
+/* Shadow behind the canvas to make it pop */
+.canvas-container {
+    position: relative;
+    padding: 0;
+    background: transparent;
+    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s;
+}
+
+canvas {
+    display: block;
+    /* Ensure it looks good on screens */
+    max-width: 100%;
+    max-height: 90vh;
+    width: 512px;
+    height: 512px;
+    /* Optional slight border radius for the preview only, not the export */
+    /* border-radius: 4px; */
+}
