@@ -200,6 +200,14 @@ function updateState(key, value) {
         }
     }
     saveState();
+
+    if (key === 'fontFamily' || key === 'fontWeight') {
+        const fontString = `${state.fontWeight} ${state.textSize}px ${state.fontFamily}`;
+        document.fonts.load(fontString).then(() => {
+            draw();
+        });
+    }
+
     draw();
 }
 
